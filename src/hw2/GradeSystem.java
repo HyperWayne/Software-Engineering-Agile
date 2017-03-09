@@ -34,8 +34,9 @@ public class GradeSystem{
 				final_exam=Integer.parseInt(scanner.next());
 				Grades aGrade= new Grades(ID,name,lab1,lab2,lab3,mid,final_exam);
 				aGrade.totalGrade=aGrade.calculateTotalGrade(weights);
+				//System.out.println(ID);
 				alist.add(aGrade);
-				//System.out.println(line);
+				
 			}
 		}
 		catch(FileNotFoundException ex){

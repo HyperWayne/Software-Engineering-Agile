@@ -16,7 +16,7 @@ public class Main_extends_Object {
 	}
 	public class NoSuchIDExceptions extends Exception{
 		public NoSuchIDExceptions(String ID){
-			
+			super(ID);
 			
 			//throw new NoSuchIDExceptions(msg1);
 			
