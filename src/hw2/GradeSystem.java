@@ -12,14 +12,14 @@ public class GradeSystem{
 	float[] new_weights=new float[5];
 	String filePath = "C:/Users/黃孟霖/workspace/Software-Engineering-Agile/src/gradeinput.txt";
 	//weights=new float[5];
-	public LinkedList<Grades> alist;
+	public LinkedList<Grades> alist=new LinkedList<Grades>();
 	String line = null;
 	String fileName = filePath.substring(0,filePath.indexOf("gradeinput.txt"));
 	
 	public  GradeSystem(){
-	
+			//System.out.println("test");
 		try{
-			InputStreamReader fileReader = new InputStreamReader(new FileInputStream(filePath),"utf-8");
+			InputStreamReader fileReader = new InputStreamReader(new FileInputStream(filePath),"UTF-8");
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
 			while((line = bufferedReader.readLine())!=null){
 				Scanner scanner = new Scanner (line);
@@ -27,16 +27,17 @@ public class GradeSystem{
 				String ID,name;
 				ID=scanner.next();
 				name=scanner.next();
+				if(name.length()<=1){
+					name=name+scanner.next();	
+				}
 				lab1=Integer.parseInt(scanner.next());
 				lab2=Integer.parseInt(scanner.next());
 				lab3=Integer.parseInt(scanner.next());
 				mid=Integer.parseInt(scanner.next());
 				final_exam=Integer.parseInt(scanner.next());
 				Grades aGrade= new Grades(ID,name,lab1,lab2,lab3,mid,final_exam);
-				aGrade.totalGrade=aGrade.calculateTotalGrade(weights);
-				//System.out.println(ID);
+				aGrade.totalGrade=aGrade.calculateTotalGrade(weights);		
 				alist.add(aGrade);
-				
 			}
 		}
 		catch(FileNotFoundException ex){
@@ -101,14 +102,15 @@ public class GradeSystem{
 			}
 		}
 	}
-	public void updateWeight(){
+	public void updateWeight(String ID){
 		showOldWeights();
 		getNewWeights();
-		setWeights(weights);
+		setWeights(weights,ID);
 	}
 	public void showOldWeights(){
-		System.out.println("舊配分"+"\n  lab1   "+weights[0]*10+"%"+"\n  lab2   "+weights[1]*10+"%"+
-				"\n  lab3   "+weights[2]*10+"%"+"\n  mid-term "+weights[3]*10+"%"+"\n final exam  "+weights[4]*10+"%");
+		System.out.println("舊配分"+"\n  lab1   "+Math.round(weights[0]*100)+"%"+"\n  lab2   "+Math.round(weights[1]*100)+"%"+
+				"\n  lab3   "+Math.round(weights[2]*100)+"%"+"\n  mid-term "+Math.round(weights[3]*100)+"%"+"\n final exam  "+
+				Math.round(weights[4]*100)+"%");
 	}
 	public void getNewWeights(){
 		Scanner scanner=new Scanner(System.in);
@@ -117,18 +119,28 @@ public class GradeSystem{
 		new_weights[2]=scanner.nextFloat();
 		new_weights[3]=scanner.nextFloat();
 		new_weights[4]=scanner.nextFloat();
+		System.out.println("輸入新配分"+"\n  lab1   "+Math.round(new_weights[0]*100)+"\n  lab2   "+Math.round(new_weights[1]*100)+
+				"\n  lab3   "+Math.round(new_weights[2]*100)+"\n  mid-term "+Math.round(new_weights[3]*100)+"\n final exam  "+
+				Math.round(new_weights[4]*100));
 	}
-	public void setWeights(float[] weights){
-		System.out.println("請確認新配分"+"\n  lab1   "+new_weights[0]*10+"%"+"\n  lab2   "+new_weights[1]*10+"%"+
-				"\n  lab3   "+new_weights[2]*10+"%"+"\n  mid-term "+new_weights[3]*10+"%"+"\n final exam  "+new_weights[4]*10+"%"+
+	public void setWeights(float[] weights,String id){
+		System.out.println("請確認新配分"+"\n  lab1   "+Math.round(new_weights[0]*100)+"%"+"\n  lab2   "+Math.round(new_weights[1]*100)+"%"+
+				"\n  lab3   "+Math.round(new_weights[2]*100)+"%"+"\n  mid-term "+Math.round(new_weights[3]*100)+"%"+"\n final exam  "+
+				Math.round(new_weights[4]*100)+"%"+
 				"\n以上正確嗎?Y(Yes)或N(No)");
 		Scanner scanner=new Scanner(System.in);
-		if(Integer.toString(scanner.nextInt()).equals("Y")){
+		if(scanner.next().equals("Y")){
 			weights[0]=new_weights[0];
 			weights[1]=new_weights[1];
 			weights[2]=new_weights[2];
 			weights[3]=new_weights[3];
 			weights[4]=new_weights[4];
+			for(Iterator<Grades>it=alist.iterator();it.hasNext();){
+				Grades cur=it.next();
+				if(cur.ID.equals(id)){
+					cur.totalGrade=cur.calculateTotalGrade(weights);
+				}
+			}
 		}
 		else {
 			new_weights[0]=0;

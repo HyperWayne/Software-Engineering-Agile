@@ -2,10 +2,10 @@ package hw2;
 import java.util.Scanner;
 public class Main_extends_Object {
 	public static void main(String args[]){
-		Scanner scanner=new Scanner(System.in);
+		//Scanner scanner=new Scanner(System.in);
 		String in;
-		String msg1="ID error",msg2="Invalid command";
-		in=scanner.next();
+		String msg1="ID¿ù¤F",msg2="«ü¥O¿ù¤F";
+		//in=scanner.next();
 		try{
 			UI aUI=new UI();		
 		}catch(NoSuchIDExceptions e1){
@@ -23,8 +23,9 @@ public class Main_extends_Object {
 		}
 	}
 	public class NoSuchCommandExceptions extends Exception {
+		public NoSuchCommandExceptions(){}
 		public NoSuchCommandExceptions(String Command){
-			
+			super(Command);
 			//throw new NoSuchIDExceptions(msg2);
 		}
 	}
