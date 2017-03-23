@@ -137,9 +137,9 @@ public class GradeSystem{
 			weights[4]=new_weights[4];
 			for(Iterator<Grades>it=alist.iterator();it.hasNext();){
 				Grades cur=it.next();
-				if(cur.ID.equals(id)){
-					cur.totalGrade=cur.calculateTotalGrade(weights);
-				}
+				
+				cur.totalGrade=cur.calculateTotalGrade(weights);
+				
 			}
 		}
 		else {

@@ -1,6 +1,6 @@
 package hw2;
-import java.io.*;
-import java.util.Scanner;
+
+
 public class Grades {
 	String name,ID;
 	public int lab1,lab2,lab3,midTerm,finalExam,totalGrade;

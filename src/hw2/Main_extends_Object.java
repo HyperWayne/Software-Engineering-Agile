@@ -14,7 +14,7 @@ public class Main_extends_Object {
 			System.out.println(msg2);
 		}
 	}
-	public class NoSuchIDExceptions extends Exception{
+	public  class NoSuchIDExceptions extends Exception{
 		public NoSuchIDExceptions(String ID){
 			super(ID);
 			
