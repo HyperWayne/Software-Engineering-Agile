@@ -49,19 +49,31 @@ public class GradeSystem{
 		
 	}
 	
-	public boolean containsID(int ID){
+	/*public boolean containsID(String ID){
 		boolean flag;
 		for(Iterator<Grades>it=alist.iterator();it.hasNext();){
 			Grades current=((Grades)it.next());
 			if(current.ID.equals(ID)){
 				flag=true;
-				break;
+				return flag;
 			}
 		}
 		flag=false;
 		return flag;
-	}
-	
+	}*/
+	/*method showRank-------------------------------------------------------
+	 * 用來算排名
+	 * 
+	 * @param ID  當下的使用者
+	 * @return integer rank
+	 * 
+	 * Psedo code:
+	 * 透過兩個for迴圈，一個for先找出使用者的totalGrade，另一個算rank
+	 * 回傳rank
+	 * 
+	 * Time estimate:O(2*n)=O(n)
+	 * Example GradeSystem物件.showRank(ID);回傳rank
+	 -----------------------------------------------------------------------*/
 	public int showRank(String ID){
 		int rank=1,TotalGrade=0;
 		for(Iterator<Grades>it=alist.iterator();it.hasNext();){
@@ -78,7 +90,19 @@ public class GradeSystem{
 		}
 		return rank;
 	}
-	
+	/*method showGrade-------------------------------------------------------
+	 * 輸出使用者的成績
+	 * 
+	 * @param ID  當下的使用者
+	 * 
+	 * 
+	 * Psedo code:
+	 * 透過if else判斷是否低於60分，低於會在成績後標註個*
+	 * 輸出使用者成績列表
+	 * 
+	 * Time estimate:O(1)
+	 * Example GradeSystem物件.showGrade(ID);輸出成績
+	 -----------------------------------------------------------------------*/
 	public void showGrade(String ID){
 		for(Iterator<Grades>it=alist.iterator();it.hasNext();){
 			Grades current=((Grades)it.next());
@@ -102,16 +126,53 @@ public class GradeSystem{
 			}
 		}
 	}
+	/*method showRank---------------------------------------------------------
+	 * 用來算處理輸入配分
+	 * 
+	 * @param ID  當下的使用者
+	 * 
+	 * 
+	 * Psedo code:
+	 * 呼叫showOldWeights印出舊配分
+	 * 再call getNewWeights接使用者輸入的新成績
+	 * 最後setWeights(weights,ID)確認使用者輸入的新配分，並更新所有人的totalGrade
+	 * 
+	 * Time estimate:O(1)
+	 * Example GradeSystem物件.updateWeight(ID);進入改加權狀態
+	 -----------------------------------------------------------------------*/
 	public void updateWeight(String ID){
 		showOldWeights();
 		getNewWeights();
 		setWeights(weights,ID);
 	}
+	/*method showOldWeights--------------------------------------------------
+	 * 用來印出當下的加權
+	 * 
+	 * 
+	 * Psedo code:
+	 * System.out.println(舊加權)
+	 * 
+	 * Time estimate:O(1)
+	 * Example GradesSystem物件.showOldWeights();輸出舊配分
+	 -----------------------------------------------------------------------*/
 	public void showOldWeights(){
 		System.out.println("舊配分"+"\n  lab1   "+Math.round(weights[0]*100)+"%"+"\n  lab2   "+Math.round(weights[1]*100)+"%"+
 				"\n  lab3   "+Math.round(weights[2]*100)+"%"+"\n  mid-term "+Math.round(weights[3]*100)+"%"+"\n final exam  "+
 				Math.round(weights[4]*100)+"%");
 	}
+	/*method getNewWeights---------------------------------------------------
+	 * 用來接使用者輸入的新配分
+	 * 
+	 * 
+	 * 
+	 * 
+	 * Psedo code:
+	 * 透過Scanner來接使用者新輸入的加權，然後將值放進暫存的float [] new_weights裡
+	 * 最後印出使用者新輸入的配分(須為小數)
+	 * 
+	 * Time estimate:O(1)
+	 * Example GradeSystem物件.getNewWeights();輸入新配分，之後印出新配分
+	 -----------------------------------------------------------------------*/
 	public void getNewWeights(){
 		Scanner scanner=new Scanner(System.in);
 		new_weights[0]=scanner.nextFloat();
@@ -123,13 +184,26 @@ public class GradeSystem{
 				"\n  lab3   "+Math.round(new_weights[2]*100)+"\n  mid-term "+Math.round(new_weights[3]*100)+"\n final exam  "+
 				Math.round(new_weights[4]*100));
 	}
+	/*method setWeights------------------------------------------------------
+	 * 用來確認使用者新輸入的配分，並更新所有人的totalGrade
+	 * 
+	 * 
+	 * 
+	 * 
+	 * Psedo code:
+	 * 輸出新配分，if使用者輸入Y確認的話就去用for迴圈更新所有人的totalGrade，並更新weights
+	 * else 則保持原樣，讓new_weights設為0
+	 * 
+	 * Time estimate:O(n)
+	 * Example GradeSystem物件.setWeights(weights,id);接確認指令，更新weights、totalGrade
+	 -----------------------------------------------------------------------*/
 	public void setWeights(float[] weights,String id){
 		System.out.println("請確認新配分"+"\n  lab1   "+Math.round(new_weights[0]*100)+"%"+"\n  lab2   "+Math.round(new_weights[1]*100)+"%"+
 				"\n  lab3   "+Math.round(new_weights[2]*100)+"%"+"\n  mid-term "+Math.round(new_weights[3]*100)+"%"+"\n final exam  "+
 				Math.round(new_weights[4]*100)+"%"+
 				"\n以上正確嗎?Y(Yes)或N(No)");
 		Scanner scanner=new Scanner(System.in);
-		if(scanner.next().equals("Y")){
+		if(scanner.next().toUpperCase().equals("Y")){
 			weights[0]=new_weights[0];
 			weights[1]=new_weights[1];
 			weights[2]=new_weights[2];
@@ -143,11 +217,36 @@ public class GradeSystem{
 			}
 		}
 		else {
-			new_weights[0]=0;
-			new_weights[1]=0;
-			new_weights[2]=0;
-			new_weights[3]=0;
-			new_weights[4]=0;
+			new_weights[0]=0.1f;
+			new_weights[1]=0.1f;
+			new_weights[2]=0.1f;
+			new_weights[3]=0.3f;
+			new_weights[4]=0.4f;
+		}
+	}
+	/*method initialize_Weights-----------------------------------------------
+	 * 當使用者登出，重置配分、totalGrade
+	 * 
+	 * 
+	 * 
+	 * 
+	 * Psedo code:
+	 * initialize weights、totalGrade
+	 * 
+	 * Time estimate:O(n)
+	 * Example GradeSystem物件.initialize_Weights();初始化weights、totalGrade
+	 -----------------------------------------------------------------------*/
+	public void initialize_Weights(){
+		weights[0]=0.1f;
+		weights[1]=0.1f;
+		weights[2]=0.1f;
+		weights[3]=0.3f;
+		weights[4]=0.4f;
+		for(Iterator<Grades>it=alist.iterator();it.hasNext();){
+			Grades cur=it.next();
+			
+			cur.totalGrade=cur.calculateTotalGrade(weights);
+			
 		}
 	}
 	
