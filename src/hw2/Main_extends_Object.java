@@ -4,7 +4,7 @@ public class Main_extends_Object {
 	public static void main(String args[]){
 		//Scanner scanner=new Scanner(System.in);
 		String in;
-		String msg1="ID¿ù¤F",msg2="«ü¥O¿ù¤F";
+		String msg1="ID Error",msg2="";
 		//in=scanner.next();
 		try{
 			UI aUI=new UI();		

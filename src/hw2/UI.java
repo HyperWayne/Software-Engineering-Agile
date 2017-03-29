@@ -19,17 +19,18 @@ public class UI extends Main_extends_Object{
 			try{
 				 aGradeSystem=new GradeSystem();
 				
-				while(true){
-					//Scanner scanner=new Scanner(System.in);
-					
-					
+				while(true){					
 					promptID();
-					IDI=scanner.next();
-					if(IDI.equals("Q"))break;
+					IDI = scanner.next();
+					if(IDI.equals("Q") || IDI.equals("q")) break;
 					if(checkID(IDI)){
 						showWelcomeMsg(IDI);
-						System.out.println("¿é¤J«ü¥O1)GÅã¥Ü¦¨ÁZ(Grade)\n     2)RÅã¥Ü±Æ¦W(Rank)\n     3)AÅã¥Ü¥­§¡(Average)\n     4)W§ó·s°t¤À(Weight)\n    "
-								+ " 5)EÂ÷¶}¿ï³æ(Exit)");
+						System.out.println("è¼¸å…¥æŒ‡ä»¤\n"
+								+"	1) G é¡¯ç¤ºæˆç¸¾(Grade)\n"
+								+"	2) R é¡¯ç¤ºæ’å(Rank)\n"
+								+"	3) A é¡¯ç¤ºå¹³å‡(Average)\n"
+								+"	4) W æ›´æ–°é…åˆ†(Weight)\n"
+								+"	5) E é›¢é–‹é¸å–®(Exit)");
 					}
 					while(promptCommand()){
 					
@@ -42,21 +43,21 @@ public class UI extends Main_extends_Object{
 				
 			}
 	}
-	/* method  checkID  ----------------------------------------------------------------------------------                                                                                                    
-	* ¥Î¨Ó½T»{±ı¬d¸ßªºID¬O§_¦s¦b©óGradeSystems¨t²Î¤º
+	/** method  checkID  ----------------------------------------------------------------------------------                                                                                                    
+	*   ç”¨ä¾†ç¢ºèªæ¬²æŸ¥è©¢çš„IDæ˜¯å¦å­˜åœ¨æ–¼GradeSystemsç³»çµ±å…§
 	*
-	* @param ID     ¥Î¨Ó¬d¸ßªºID
-	* @return ¤@­Ó¥¬ªL­È¡A­Y¬°true«h¥NªíGradeSystems¦³³oµ§¸ê®Æ¡A­Yfalse«h§_
+	*   @param ID : ç”¨ä¾†æŸ¥è©¢çš„ID
+	*   @return ä¸€å€‹å¸ƒæ—å€¼ï¼Œè‹¥ç‚ºtrueå‰‡ä»£è¡¨GradeSystemsæœ‰é€™ç­†è³‡æ–™ï¼Œè‹¥falseå‰‡å¦
 	*
-	* @throws NoSuchIDExceptions ¡V 
-	*			­Y¨Ï¥ÎªÌ¿é¤JªºID¤£¦bGradeSystems¤º«h©ß¥XNoSuchIDExceptions
-	*Pseudo code:
-	*1.­naGradeSystem °µcontainsID(ID) ¬İ ID ¬O§_§t¦b aGradeSystem¤º 
-	*2.if not, throw an object of NoSuchIDExceptions
-	*3.¦^¶Ç true
+	*   @throws NoSuchIDExceptions â€“ 
+	*	    		è‹¥ä½¿ç”¨è€…è¼¸å…¥çš„IDä¸åœ¨GradeSystemså…§å‰‡æ‹‹å‡ºNoSuchIDExceptions
+	*  Pseudo code:
+	*  1.è¦aGradeSystem åšcontainsID(ID) çœ‹ ID æ˜¯å¦å«åœ¨ aGradeSystemå…§ 
+	*  2.if not, throw an object of NoSuchIDExceptions
+	*  3.å›å‚³ true
     *
-	* Time estimate : O (n)
-	* Example: UIª«¥ó.checkID(962001044) ; ¶Ç¦^µ²ªG¬° true
+	*  Time estimate : O (n)
+	*  Example: UIç‰©ä»¶.checkID(962001044) ; å‚³å›çµæœç‚º true
 	----------------------------------------------------------------------------------------------------------*/
 
 	public boolean checkID(String ID)throws NoSuchIDExceptions{
@@ -75,27 +76,27 @@ public class UI extends Main_extends_Object{
 		if(flag==false)throw new NoSuchIDExceptions(ID);
 		return flag;
 	}
-	/* method  promptCommand  ----------------------------------------------------------------------------------                                                                                                    
-	* µn¤JID«áªº¥D¤¶­±
+	/** method  promptCommand  ----------------------------------------------------------------------------------                                                                                                    
+	*   ç™»å…¥IDå¾Œçš„ä¸»ä»‹é¢
 	*
 	*
-	* @return ¤@­Ó¥¬ªL­È¡A­Y¬°true«h¥Nªí¨Ï¥ÎªÌ­n°h¥X¡A«h¦^¨ìUI«Øºc¤l
+	*   @return ä¸€å€‹å¸ƒæ—å€¼ï¼Œè‹¥ç‚ºtrueå‰‡ä»£è¡¨ä½¿ç”¨è€…è¦é€€å‡ºï¼Œå‰‡å›åˆ°UIå»ºæ§‹å­
 	*
-	* @throws NoSuchCommandExceptions ¡V 
-	*			­Y¨Ï¥ÎªÌ¿é¤JªºCommand¤£¦b¿ï¶µ¤¤«h©ß¥XNoSuchCommandExceptions
-	*Pseudo code:
-	*1.§PÂ_¨Ï¥ÎªÌ¿é¤Jªºcommand¬O§_¦Xªk 
-	*2.if not, throw an object of NoSuchCommandExceptions
-	*3.else ¨Ì¾Ú¿é¤Jªº«ü¥O¦b©¹¤U¼h¥h°µ
+	*   @throws NoSuchCommandExceptions â€“ 
+	*			è‹¥ä½¿ç”¨è€…è¼¸å…¥çš„Commandä¸åœ¨é¸é …ä¸­å‰‡æ‹‹å‡ºNoSuchCommandExceptions
+	*  Pseudo code:
+	*  1.åˆ¤æ–·ä½¿ç”¨è€…è¼¸å…¥çš„commandæ˜¯å¦åˆæ³• 
+	*  2.if not, throw an object of NoSuchCommandExceptions
+	*  3.else ä¾æ“šè¼¸å…¥çš„æŒ‡ä»¤åœ¨å¾€ä¸‹å±¤å»åš
     *
-	* Time estimate : O (1)
-	* Example: UIª«¥ó.promptCommand() ; ª½¨ì¦Y¨ìE¬°¤î³£¶Ç¦^µ²ªG¬° true
+	*  Time estimate : O (1)
+	*  Example: UIç‰©ä»¶.promptCommand() ; ç›´åˆ°åƒåˆ°Eç‚ºæ­¢éƒ½å‚³å›çµæœç‚º true
 	----------------------------------------------------------------------------------------------------------*/
 
 	public boolean promptCommand()throws NoSuchCommandExceptions{
 		inputcommand=scanner.next();
 		inputcommand=inputcommand.toUpperCase();
-		System.out.println("¨Ï¥ÎªÌ¿é¤J:"+inputcommand);
+		System.out.println("User Input: "+inputcommand);
 		boolean flag=true;
 		if(inputcommand.equals("G")||inputcommand.equals("R")||inputcommand.equals("W")||inputcommand.equals("A")){
 			if(inputcommand.equals("G")){
@@ -103,7 +104,7 @@ public class UI extends Main_extends_Object{
 			}
 			else if(inputcommand.equals("R")){
 				int rank=aGradeSystem.showRank(IDI);
-				System.out.println(username+"±Æ¦W²Ä"+rank);
+				System.out.println(username+" is rank "+rank);
 				
 			}
 			else if(inputcommand.equals("W")){
@@ -113,6 +114,12 @@ public class UI extends Main_extends_Object{
 			else if(inputcommand.equals("A")){
 				showAverage();
 			}
+			System.out.println("è¼¸å…¥æŒ‡ä»¤\n"
+					+"	1) G é¡¯ç¤ºæˆç¸¾(Grade)\n"
+					+"	2) R é¡¯ç¤ºæ’å(Rank)\n"
+					+"	3) A é¡¯ç¤ºå¹³å‡(Average)\n"
+					+"	4) W æ›´æ–°é…åˆ†(Weight)\n"
+					+"	5) E é›¢é–‹é¸å–®(Exit)");
 			
 		}
 		else if(inputcommand.equals("E")){
@@ -127,82 +134,90 @@ public class UI extends Main_extends_Object{
 		
 		return true;
 	}
-	/*method promptID-------------------------------------------------------
-	 * «ü¥Ü¨Ï¥ÎªÌ¿é¤JID©ÎQ
+	/** method promptID-------------------------------------------------------
+	 *  æŒ‡ç¤ºä½¿ç”¨è€…è¼¸å…¥IDæˆ–Q
 	 * 
 	 * 
-	 * Psedo code:
-	 * ¤¶­±
+	 *  Pseudo code:
+	 *  ä»‹é¢
 	 * 
-	 * Time estimate:O(1)
-	 * Example UIª«¥ó.promptID();¤¶­±
+	 *  Time estimate:O(1)
+	 *  Example UIç‰©ä»¶.promptID();ä»‹é¢
 	 -----------------------------------------------------------------------*/
 	public void promptID(){
-		System.out.println("¿é¤JID©ÎQ(µ²§ô¨Ï¥Î)");
+		System.out.println("Enter ID, or press Q to quit.\n");
 	}
-	/*method showFinishMsg----------------------------------------------------
-	 *¨Ï¥ÎªÌ¿é¤JQ®É¡A»¡BYEBYE
+	/** method showFinishMsg----------------------------------------------------
+	 *  ä½¿ç”¨è€…è¼¸å…¥Qæ™‚ï¼ŒèªªBYEBYE
 	 * 
 	 * 
-	 * Psedo code:
-	 * Â÷¶}°T®§
+	 *  Pseudo code:
+	 *  é›¢é–‹è¨Šæ¯
 	 * 
-	 * Time estimate:O(1)
-	 * Example UIª«¥ó.showFinishMsg();Â÷¶}°T®§
+	 *  Time estimate:O(1)
+	 *  Example UIç‰©ä»¶.showFinishMsg();é›¢é–‹è¨Šæ¯
 	 -----------------------------------------------------------------------*/
 	public void showFinishMsg(){
 		System.out.println("Bye");
 		System.exit(0);
 	}
-	/*method showWelcomeMsg----------------------------------------------------
-	 * ¨Ï¥ÎªÌµn¤J¥´©Û©I
+	/**method showWelcomeMsg----------------------------------------------------
+	 * ä½¿ç”¨è€…ç™»å…¥æ‰“æ‹›å‘¼
 	 * 
 	 * 
-	 * Psedo code:
-	 * ¥´©Û©I
+	 * Pseudo code:
+	 * æ‰“æ‹›å‘¼
 	 * 
 	 * Time estimate:O(1)
-	 * Example UIª«¥ó.showWelcomeMsg();Åwªï°T®§
+	 * Example UIç‰©ä»¶.showWelcomeMsg();æ­¡è¿è¨Šæ¯
 	 -----------------------------------------------------------------------*/
 	public void showWelcomeMsg(String ID){
 		
 			System.out.println("Welcome "+username);	
 	}
-	/*method showAverage------------------------------------------------------
-	 * Åã¥Ü¥­§¡
+	/** method showAverage------------------------------------------------------
+	 *  é¡¯ç¤ºå¹³å‡
 	 * 
 	 * 
-	 * Psedo code:
-	 * 1¦pªG¬O²Ä¤@¦¸¶i¤J«hcall calculateAveºâ¥­§¡
-	 * 2¡B§_«h´N¿é¥X¤§«eºâ¦nªº¥­§¡
+	 *  Pseudo code:
+	 *  1. å¦‚æœæ˜¯ç¬¬ä¸€æ¬¡é€²å…¥å‰‡call calculateAveç®—å¹³å‡
+	 *  2. å¦å‰‡å°±è¼¸å‡ºä¹‹å‰ç®—å¥½çš„å¹³å‡
 	 * 
-	 * Time estimate:O(1)
-	 * Example UIª«¥ó.promptID();
+	 *  Time estimate:O(1)
+	 *  Example UIç‰©ä»¶.promptID();
 	 -----------------------------------------------------------------------*/
 	public void showAverage(){
 		if(to==0){
 			calculateAve();
-			System.out.println("Á`¥­§¡"+"\n  lab1   "+a_lab1+"\n  lab2   "+a_lab2+
-					"\n  lab3   "+a_lab3+"\n  mid-term "+a_mid+"\n final exam  "+
-					a_final+"\n totalGrade  "+a_total);
+			System.out.println("Total Average:"+
+					"\nlab1: "+a_lab1+
+					"\nlab2: "+a_lab2+
+					"\nlab3: "+a_lab3+
+					"\nmid-term: "+a_mid+
+					"\nfinal exam: "+a_final+
+					"\ntotalGrade: "+a_total);
 		}
 		else{
-			System.out.println("Á`¥­§¡"+"\n  lab1   "+a_lab1+"\n  lab2   "+a_lab2+
-					"\n  lab3   "+a_lab3+"\n  mid-term "+a_mid+"\n final exam  "+
-					a_final+"\n totalGrade  "+a_total);
+			System.out.println("Total Average"+
+					"\nlab1:"+a_lab1+
+					"\nlab2:"+a_lab2+
+					"\nlab3:"+a_lab3+
+					"\nmid-term "+a_mid+
+					"\nfinal exam: "+a_final+
+					"\ntotalGrade: "+a_total);
 		}
 		
 	}
-	/*method calculateAve-----------------------------------------------------
-	 * ºâÁ`¥­§¡
+	/** method calculateAve-----------------------------------------------------
+	 *  ç®—ç¸½å¹³å‡
 	 * 
 	 * 
-	 * Psedo code:
-	 * 1¤@¼hfor°j°éºâ¥X¦U¶µ¥[Á`
-	 * 2°£¥H¤H¼Æ
+	 *  Pseudo code:
+	 *  1.ä¸€å±¤forè¿´åœˆç®—å‡ºå„é …åŠ ç¸½
+	 *  2.é™¤ä»¥äººæ•¸
 	 * 
-	 * Time estimate:O(n)
-	 * Example UIª«¥ó.calculateAve();
+	 *  Time estimate:O(n)
+	 *  Example UIç‰©ä»¶.calculateAve();
 	 -----------------------------------------------------------------------*/
 	public void calculateAve(){
 		int person=0;

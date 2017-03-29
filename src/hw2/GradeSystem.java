@@ -8,25 +8,27 @@ public class GradeSystem{
 	
 	
 	
-	float[] weights={0.1f,0.1f,0.1f,0.3f,0.4f};
+	float[] weights={0.1f, 0.1f, 0.1f, 0.3f,0.4f};
 	float[] new_weights=new float[5];
-	String filePath = "C:/Users/¶À©sÀM/workspace/Software-Engineering-Agile/src/gradeinput.txt";
-	//weights=new float[5];
+	String filePath = "src/gradeinput.txt";
 	public LinkedList<Grades> alist=new LinkedList<Grades>();
 	String line = null;
 	String fileName = filePath.substring(0,filePath.indexOf("gradeinput.txt"));
 	
 	public  GradeSystem(){
-			//System.out.println("test");
+			
 		try{
 			InputStreamReader fileReader = new InputStreamReader(new FileInputStream(filePath),"UTF-8");
+			@SuppressWarnings("resource")
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
+			
 			while((line = bufferedReader.readLine())!=null){
+				@SuppressWarnings("resource")
 				Scanner scanner = new Scanner (line);
-				int lab1,lab2,lab3,mid,final_exam;
-				String ID,name;
-				ID=scanner.next();
-				name=scanner.next();
+				int lab1, lab2, lab3, mid, final_exam;
+				String ID, name;
+				ID = scanner.next();
+				name = scanner.next();
 				if(name.length()<=1){
 					name=name+scanner.next();	
 				}
@@ -49,31 +51,20 @@ public class GradeSystem{
 		
 	}
 	
-	/*public boolean containsID(String ID){
-		boolean flag;
-		for(Iterator<Grades>it=alist.iterator();it.hasNext();){
-			Grades current=((Grades)it.next());
-			if(current.ID.equals(ID)){
-				flag=true;
-				return flag;
-			}
-		}
-		flag=false;
-		return flag;
-	}*/
-	/*method showRank-------------------------------------------------------
-	 * ¥Î¨Óºâ±Æ¦W
+	/** method showRank-------------------------------------------------------
+	 *  ç”¨ä¾†ç®—æ’å
 	 * 
-	 * @param ID  ·í¤Uªº¨Ï¥ÎªÌ
-	 * @return integer rank
+	 *  @param ID  ç•¶ä¸‹çš„ä½¿ç”¨è€…
+	 *  @return integer rank
 	 * 
-	 * Psedo code:
-	 * ³z¹L¨â­Ófor°j°é¡A¤@­Ófor¥ı§ä¥X¨Ï¥ÎªÌªºtotalGrade¡A¥t¤@­Óºârank
-	 * ¦^¶Çrank
+	 *  Pseudo code:
+	 *  é€éå…©å€‹forè¿´åœˆï¼Œä¸€å€‹forå…ˆæ‰¾å‡ºä½¿ç”¨è€…çš„totalGradeï¼Œå¦ä¸€å€‹ç®—rank
+	 *  å›å‚³rank
 	 * 
-	 * Time estimate:O(2*n)=O(n)
-	 * Example GradeSystemª«¥ó.showRank(ID);¦^¶Çrank
+	 *  Time estimate:O(2*n)=O(n)
+	 *  Example GradeSystemç‰©ä»¶.showRank(ID);å›å‚³rank
 	 -----------------------------------------------------------------------*/
+	
 	public int showRank(String ID){
 		int rank=1,TotalGrade=0;
 		for(Iterator<Grades>it=alist.iterator();it.hasNext();){
@@ -90,88 +81,98 @@ public class GradeSystem{
 		}
 		return rank;
 	}
-	/*method showGrade-------------------------------------------------------
-	 * ¿é¥X¨Ï¥ÎªÌªº¦¨ÁZ
+	
+	/** method showGrade-------------------------------------------------------
+	 *  è¼¸å‡ºä½¿ç”¨è€…çš„æˆç¸¾
 	 * 
-	 * @param ID  ·í¤Uªº¨Ï¥ÎªÌ
+	 *  @param ID  ç•¶ä¸‹çš„ä½¿ç”¨è€…
 	 * 
 	 * 
-	 * Psedo code:
-	 * ³z¹Lif else§PÂ_¬O§_§C©ó60¤À¡A§C©ó·|¦b¦¨ÁZ«á¼Ğµù­Ó*
-	 * ¿é¥X¨Ï¥ÎªÌ¦¨ÁZ¦Cªí
+	 *  Pseudo code:
+	 *  é€éif elseåˆ¤æ–·æ˜¯å¦ä½æ–¼60åˆ†ï¼Œä½æ–¼æœƒåœ¨æˆç¸¾å¾Œæ¨™è¨»å€‹*
+	 *  è¼¸å‡ºä½¿ç”¨è€…æˆç¸¾åˆ—è¡¨
 	 * 
-	 * Time estimate:O(1)
-	 * Example GradeSystemª«¥ó.showGrade(ID);¿é¥X¦¨ÁZ
+	 *  Time estimate:O(1)
+	 *  Example GradeSystemç‰©ä»¶.showGrade(ID);è¼¸å‡ºæˆç¸¾
 	 -----------------------------------------------------------------------*/
+	
 	public void showGrade(String ID){
 		for(Iterator<Grades>it=alist.iterator();it.hasNext();){
 			Grades current=((Grades)it.next());
 			if(current.ID.equals(ID)){
-				String lab1,lab2,lab3,mid_term,final_exam,total_grade;
-				if(current.lab1<60)lab1=Integer.toString(current.lab1)+"*";
+				String lab1, lab2, lab3, mid_term, final_exam, total_grade;
+				if(current.lab1<60) lab1=Integer.toString(current.lab1)+"*";
 				else lab1=Integer.toString(current.lab1);
-				if(current.lab2<60)lab2=Integer.toString(current.lab2)+"*";
+				if(current.lab2<60) lab2=Integer.toString(current.lab2)+"*";
 				else lab2=Integer.toString(current.lab2);
-				if(current.lab3<60)lab3=Integer.toString(current.lab3)+"*";
+				if(current.lab3<60) lab3=Integer.toString(current.lab3)+"*";
 				else lab3=Integer.toString(current.lab3);
-				if(current.midTerm<60)mid_term=Integer.toString(current.midTerm)+"*";
+				if(current.midTerm<60) mid_term=Integer.toString(current.midTerm)+"*";
 				else mid_term=Integer.toString(current.midTerm);
-				if(current.finalExam<60)final_exam=Integer.toString(current.finalExam)+"*";
+				if(current.finalExam<60) final_exam=Integer.toString(current.finalExam)+"*";
 				else final_exam=Integer.toString(current.finalExam);
-				if(current.totalGrade<60)total_grade=Integer.toString(current.totalGrade)+"*";
+				if(current.totalGrade<60) total_grade=Integer.toString(current.totalGrade)+"*";
 				else total_grade=Integer.toString(current.totalGrade);
-				System.out.println(current.name+"¦¨ÁZ:"+"lab1:   "+lab1+"\n      lab2:   "+lab2+
-				"\n      lab3:    "+lab3+"\n      mid-term: "+mid_term+"\n      final exam: "+final_exam+
-				"\n     total grade: "+total_grade);
+				System.out.println(current.name+" Score:"+
+				"\nlab1: "+lab1+
+				"\nlab2: "+lab2+
+				"\nlab3: "+lab3+
+				"\nmid-term: "+mid_term+
+				"\nfinal exam: "+final_exam+
+				"\ntotal grade: "+total_grade);
 			}
 		}
 	}
-	/*method showRank---------------------------------------------------------
-	 * ¥Î¨Óºâ³B²z¿é¤J°t¤À
+	/** method updateWeight---------------------------------------------------------
+	 *  ç”¨ä¾†ç®—è™•ç†è¼¸å…¥é…åˆ†
 	 * 
-	 * @param ID  ·í¤Uªº¨Ï¥ÎªÌ
+	 *  @param ID  ç•¶ä¸‹çš„ä½¿ç”¨è€…
 	 * 
 	 * 
-	 * Psedo code:
-	 * ©I¥sshowOldWeights¦L¥XÂÂ°t¤À
-	 * ¦Acall getNewWeights±µ¨Ï¥ÎªÌ¿é¤Jªº·s¦¨ÁZ
-	 * ³Ì«ásetWeights(weights,ID)½T»{¨Ï¥ÎªÌ¿é¤Jªº·s°t¤À¡A¨Ã§ó·s©Ò¦³¤HªºtotalGrade
+	 *  Pseudo code:
+	 *  å‘¼å«showOldWeightså°å‡ºèˆŠé…åˆ†
+	 *  å†call getNewWeightsæ¥ä½¿ç”¨è€…è¼¸å…¥çš„æ–°æˆç¸¾
+	 *  æœ€å¾ŒsetWeights(weights,ID)ç¢ºèªä½¿ç”¨è€…è¼¸å…¥çš„æ–°é…åˆ†ï¼Œä¸¦æ›´æ–°æ‰€æœ‰äººçš„totalGrade
 	 * 
-	 * Time estimate:O(1)
-	 * Example GradeSystemª«¥ó.updateWeight(ID);¶i¤J§ï¥[Åvª¬ºA
+	 *  Time estimate:O(1)
+	 *  Example GradeSystemç‰©ä»¶.updateWeight(ID);é€²å…¥æ”¹åŠ æ¬Šç‹€æ…‹
 	 -----------------------------------------------------------------------*/
 	public void updateWeight(String ID){
 		showOldWeights();
 		getNewWeights();
 		setWeights(weights,ID);
 	}
-	/*method showOldWeights--------------------------------------------------
-	 * ¥Î¨Ó¦L¥X·í¤Uªº¥[Åv
+	/** method showOldWeights--------------------------------------------------
+	 *  ç”¨ä¾†å°å‡ºç•¶ä¸‹çš„åŠ æ¬Š
 	 * 
 	 * 
-	 * Psedo code:
-	 * System.out.println(ÂÂ¥[Åv)
+	 *  Pseudo code:
+	 *  System.out.println(èˆŠåŠ æ¬Š)
 	 * 
-	 * Time estimate:O(1)
-	 * Example GradesSystemª«¥ó.showOldWeights();¿é¥XÂÂ°t¤À
+	 *  Time estimate:O(1)
+	 *  Example GradesSystemç‰©ä»¶.showOldWeights();è¼¸å‡ºèˆŠé…åˆ†
 	 -----------------------------------------------------------------------*/
 	public void showOldWeights(){
-		System.out.println("ÂÂ°t¤À"+"\n  lab1   "+Math.round(weights[0]*100)+"%"+"\n  lab2   "+Math.round(weights[1]*100)+"%"+
-				"\n  lab3   "+Math.round(weights[2]*100)+"%"+"\n  mid-term "+Math.round(weights[3]*100)+"%"+"\n final exam  "+
-				Math.round(weights[4]*100)+"%");
+		System.out.println("Old Weighted Scores"+
+				"\nlab1: "+Math.round(weights[0]*100)+"%"+
+				"\nlab2: "+Math.round(weights[1]*100)+"%"+
+				"\nlab3: "+Math.round(weights[2]*100)+"%"+
+				"\nmid-term: "+Math.round(weights[3]*100)+"%"+
+				"\nfinal exam: "+Math.round(weights[4]*100)+"%");
+		System.out.println("\n Please type new five weights, e.g, 0.1 0.2 0.3 0.4 0.5");
 	}
-	/*method getNewWeights---------------------------------------------------
-	 * ¥Î¨Ó±µ¨Ï¥ÎªÌ¿é¤Jªº·s°t¤À
+	/** method getNewWeights---------------------------------------------------
+	 *  ç”¨ä¾†æ¥ä½¿ç”¨è€…è¼¸å…¥çš„æ–°é…åˆ†
 	 * 
 	 * 
 	 * 
 	 * 
-	 * Psedo code:
-	 * ³z¹LScanner¨Ó±µ¨Ï¥ÎªÌ·s¿é¤Jªº¥[Åv¡AµM«á±N­È©ñ¶i¼È¦sªºfloat [] new_weights¸Ì
-	 * ³Ì«á¦L¥X¨Ï¥ÎªÌ·s¿é¤Jªº°t¤À(¶·¬°¤p¼Æ)
+	 *  Pseudo code:
+	 *  é€éScannerä¾†æ¥ä½¿ç”¨è€…æ–°è¼¸å…¥çš„åŠ æ¬Šï¼Œç„¶å¾Œå°‡å€¼æ”¾é€²æš«å­˜çš„float [] new_weightsè£¡
+	 *  æœ€å¾Œå°å‡ºä½¿ç”¨è€…æ–°è¼¸å…¥çš„é…åˆ†(é ˆç‚ºå°æ•¸)
 	 * 
-	 * Time estimate:O(1)
-	 * Example GradeSystemª«¥ó.getNewWeights();¿é¤J·s°t¤À¡A¤§«á¦L¥X·s°t¤À
+	 *  Time estimate:O(1)
+	 *  Example GradeSystemç‰©ä»¶.getNewWeights();è¼¸å…¥æ–°é…åˆ†ï¼Œä¹‹å¾Œå°å‡ºæ–°é…åˆ†
 	 -----------------------------------------------------------------------*/
 	public void getNewWeights(){
 		Scanner scanner=new Scanner(System.in);
@@ -180,28 +181,34 @@ public class GradeSystem{
 		new_weights[2]=scanner.nextFloat();
 		new_weights[3]=scanner.nextFloat();
 		new_weights[4]=scanner.nextFloat();
-		System.out.println("¿é¤J·s°t¤À"+"\n  lab1   "+Math.round(new_weights[0]*100)+"\n  lab2   "+Math.round(new_weights[1]*100)+
-				"\n  lab3   "+Math.round(new_weights[2]*100)+"\n  mid-term "+Math.round(new_weights[3]*100)+"\n final exam  "+
-				Math.round(new_weights[4]*100));
+		System.out.println("New Weighted Scores"+
+				"\nlab1: "+Math.round(new_weights[0]*100)+
+				"\nlab2: "+Math.round(new_weights[1]*100)+
+				"\nlab3: "+Math.round(new_weights[2]*100)+
+				"\nmid-term: "+Math.round(new_weights[3]*100)+
+				"\nfinal exam: s"+Math.round(new_weights[4]*100));
 	}
-	/*method setWeights------------------------------------------------------
-	 * ¥Î¨Ó½T»{¨Ï¥ÎªÌ·s¿é¤Jªº°t¤À¡A¨Ã§ó·s©Ò¦³¤HªºtotalGrade
+	/** method setWeights------------------------------------------------------
+	 *  ç”¨ä¾†ç¢ºèªä½¿ç”¨è€…æ–°è¼¸å…¥çš„é…åˆ†ï¼Œä¸¦æ›´æ–°æ‰€æœ‰äººçš„totalGrade
 	 * 
 	 * 
 	 * 
 	 * 
-	 * Psedo code:
-	 * ¿é¥X·s°t¤À¡Aif¨Ï¥ÎªÌ¿é¤JY½T»{ªº¸Ü´N¥h¥Îfor°j°é§ó·s©Ò¦³¤HªºtotalGrade¡A¨Ã§ó·sweights
-	 * else «h«O«ù­ì¼Ë¡AÅınew_weights³]¬°0
+	 *  Pseudo code:
+	 *  è¼¸å‡ºæ–°é…åˆ†ï¼Œifä½¿ç”¨è€…è¼¸å…¥Yç¢ºèªçš„è©±å°±å»ç”¨forè¿´åœˆæ›´æ–°æ‰€æœ‰äººçš„totalGradeï¼Œä¸¦æ›´æ–°weights
+	 *  else å‰‡ä¿æŒåŸæ¨£ï¼Œè®“new_weightsè¨­ç‚º0
 	 * 
-	 * Time estimate:O(n)
-	 * Example GradeSystemª«¥ó.setWeights(weights,id);±µ½T»{«ü¥O¡A§ó·sweights¡BtotalGrade
+	 *  Time estimate:O(n)
+	 *  Example GradeSystemç‰©ä»¶.setWeights(weights,id);æ¥ç¢ºèªæŒ‡ä»¤ï¼Œæ›´æ–°weightsã€totalGrade
 	 -----------------------------------------------------------------------*/
 	public void setWeights(float[] weights,String id){
-		System.out.println("½Ğ½T»{·s°t¤À"+"\n  lab1   "+Math.round(new_weights[0]*100)+"%"+"\n  lab2   "+Math.round(new_weights[1]*100)+"%"+
-				"\n  lab3   "+Math.round(new_weights[2]*100)+"%"+"\n  mid-term "+Math.round(new_weights[3]*100)+"%"+"\n final exam  "+
-				Math.round(new_weights[4]*100)+"%"+
-				"\n¥H¤W¥¿½T¶Ü?Y(Yes)©ÎN(No)");
+		System.out.println("New Weighted Score Confirmation: "+
+				"\nlab1: "+Math.round(new_weights[0]*100)+"%"+
+				"\nlab2: "+Math.round(new_weights[1]*100)+"%"+
+				"\nlab3: "+Math.round(new_weights[2]*100)+"%"+
+				"\nmid-term: "+Math.round(new_weights[3]*100)+"%"+
+				"\nfinal exam: "+Math.round(new_weights[4]*100)+"%"+
+				"\nCorrect? Press Y(Yes) or N(No)");
 		Scanner scanner=new Scanner(System.in);
 		if(scanner.next().toUpperCase().equals("Y")){
 			weights[0]=new_weights[0];
@@ -211,9 +218,7 @@ public class GradeSystem{
 			weights[4]=new_weights[4];
 			for(Iterator<Grades>it=alist.iterator();it.hasNext();){
 				Grades cur=it.next();
-				
-				cur.totalGrade=cur.calculateTotalGrade(weights);
-				
+				cur.totalGrade=cur.calculateTotalGrade(weights);			
 			}
 		}
 		else {
@@ -223,18 +228,19 @@ public class GradeSystem{
 			new_weights[3]=0.3f;
 			new_weights[4]=0.4f;
 		}
+		System.out.println("Set Weights Successful!");
 	}
-	/*method initialize_Weights-----------------------------------------------
-	 * ·í¨Ï¥ÎªÌµn¥X¡A­«¸m°t¤À¡BtotalGrade
+	/** method initialize_Weights-----------------------------------------------
+	 *  ç•¶ä½¿ç”¨è€…ç™»å‡ºï¼Œé‡ç½®é…åˆ†ã€totalGrade
 	 * 
 	 * 
 	 * 
 	 * 
-	 * Psedo code:
-	 * initialize weights¡BtotalGrade
+	 *  Pseudo code:
+	 *  initialize weightsã€totalGrade
 	 * 
-	 * Time estimate:O(n)
-	 * Example GradeSystemª«¥ó.initialize_Weights();ªì©l¤Æweights¡BtotalGrade
+	 *  Time estimate:O(n)
+	 *  Example GradeSystemç‰©ä»¶.initialize_Weights();åˆå§‹åŒ–weightsã€totalGrade
 	 -----------------------------------------------------------------------*/
 	public void initialize_Weights(){
 		weights[0]=0.1f;

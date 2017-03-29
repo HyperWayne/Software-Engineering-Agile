@@ -8,21 +8,25 @@ public class Grades {
 			this.ID=ID;this.name=name;this.lab1=lab1;this.lab2=lab2;this.lab3=lab3;this.midTerm=midTerm;this.finalExam=finalExam;
 			
 	}
-	/*method calculateTotalGrade--------------------------------------------
-	 * ¥Î¨ÓºâÁ`¦¨ÁZ
+	/**method calculateTotalGrade--------------------------------------------
+	 * ç”¨ä¾†ç®—ç¸½æˆç¸¾
 	 * 
-	 * @param weight  ·í¤Uªº¥[Åv¤ñ¨Ò
+	 * @param weight  ç•¶ä¸‹çš„åŠ æ¬Šæ¯”ä¾‹
 	 * @return integer totalGrade
 	 * 
-	 * Psedo code:
-	 * ³z¹L¦¨ÁZ*¥[ÅvµM«á¨ú¥|±Ë¤­¤J¨ì¾ã¼Æ¡Aºâ¥X¨Ã§ó·sÁ`¦¨ÁZ
-	 * ¦^¶ÇtotalGrade
+	 * Pseudo code:
+	 * é€éæˆç¸¾*åŠ æ¬Šç„¶å¾Œå–å››æ¨äº”å…¥åˆ°æ•´æ•¸ï¼Œç®—å‡ºä¸¦æ›´æ–°ç¸½æˆç¸¾
+	 * å›å‚³totalGrade
 	 * 
 	 * Time estimate:O(1)
-	 * Example Gradesª«¥ó.calculateTotalGrade(weight);¶Ç¦^totalGrade;
+	 * Example Gradesç‰©ä»¶.calculateTotalGrade(weight);å‚³å›totalGrade;
 	 -----------------------------------------------------------------------*/
 	public int calculateTotalGrade(float[] weights){
-		this.totalGrade = Math.round(lab1*weights[0]+lab2*weights[1]+lab3*weights[2]+midTerm*weights[3]+finalExam*weights[4]);
+		this.totalGrade = Math.round(lab1*weights[0]+
+									 lab2*weights[1]+
+									 lab3*weights[2]+
+									 midTerm*weights[3]+
+									 finalExam*weights[4]);
 		return totalGrade;
 	}
 }
