@@ -6,9 +6,7 @@ import java.util.Scanner;
 
 import hw2.Main_extends_Object.NoSuchCommandExceptions;
 public class UI extends Main_extends_Object{
-	String msg="tt";
 	String currentID="";
-	Scanner scanner=new Scanner(System.in);
 	String inputcommand;
 	String IDI;
 	String username;
@@ -19,23 +17,21 @@ public class UI extends Main_extends_Object{
 			try{
 				 aGradeSystem=new GradeSystem();
 				
-				while(true){					
-					promptID();
-					IDI = scanner.next();
-					if(IDI.equals("Q") || IDI.equals("q")) break;
-					if(checkID(IDI)){
+				while(promptID()){					
+					
+					if(checkID(IDI)==true){
 						showWelcomeMsg(IDI);
-						System.out.println("輸入指令\n"
+						/*System.out.println("輸入指令\n"
 								+"	1) G 顯示成績(Grade)\n"
 								+"	2) R 顯示排名(Rank)\n"
 								+"	3) A 顯示平均(Average)\n"
 								+"	4) W 更新配分(Weight)\n"
-								+"	5) E 離開選單(Exit)");
-					}
-					while(promptCommand()){
-					
-					}
-					
+								+"	5) E 離開選單(Exit)"); */
+						while(promptCommand()){
+							
+						}
+					} 
+					else throw new NoSuchIDExceptions(IDI);
 				}
 				showFinishMsg();
 			}
@@ -43,6 +39,30 @@ public class UI extends Main_extends_Object{
 				
 			}
 	}
+	
+	/** method promptID-------------------------------------------------------
+	 *  指示使用者輸入ID或Q
+	 * 
+	 *  @return boolean
+	 *  
+	 *  Pseudo code:
+	 *  介面
+	 *  
+	 *  Time estimate:O(1)
+	 *  Example UI物件.promptID();介面
+	 * 	 -----------------------------------------------------------------------*/
+	public boolean promptID(){
+		
+		System.out.println("Enter ID, or press Q to quit.\n");
+		Scanner scanner = new Scanner(System.in);
+		IDI = scanner.next();
+		
+		if(IDI.equals("Q")) {
+			return false;
+		}
+		else return true;
+	}
+	
 	/** method  checkID  ----------------------------------------------------------------------------------                                                                                                    
 	*   用來確認欲查詢的ID是否存在於GradeSystems系統內
 	*
@@ -94,8 +114,9 @@ public class UI extends Main_extends_Object{
 	----------------------------------------------------------------------------------------------------------*/
 
 	public boolean promptCommand()throws NoSuchCommandExceptions{
-		inputcommand=scanner.next();
-		inputcommand=inputcommand.toUpperCase();
+		Scanner scanner = new Scanner(System.in);
+		inputcommand = scanner.next();
+		inputcommand = inputcommand.toUpperCase();
 		System.out.println("User Input: "+inputcommand);
 		boolean flag=true;
 		if(inputcommand.equals("G")||inputcommand.equals("R")||inputcommand.equals("W")||inputcommand.equals("A")){
@@ -114,12 +135,13 @@ public class UI extends Main_extends_Object{
 			else if(inputcommand.equals("A")){
 				showAverage();
 			}
-			System.out.println("輸入指令\n"
-					+"	1) G 顯示成績(Grade)\n"
-					+"	2) R 顯示排名(Rank)\n"
-					+"	3) A 顯示平均(Average)\n"
-					+"	4) W 更新配分(Weight)\n"
-					+"	5) E 離開選單(Exit)");
+			System.out.println(
+					"輸入指令\n"                  +
+					"	1) G 顯示成績(Grade)\n"   +
+					"	2) R 顯示排名(Rank)\n"    +
+					"	3) A 顯示平均(Average)\n" +
+					"	4) W 更新配分(Weight)\n"  +
+					"	5) E 離開選單(Exit)");
 			
 		}
 		else if(inputcommand.equals("E")){
@@ -134,19 +156,7 @@ public class UI extends Main_extends_Object{
 		
 		return true;
 	}
-	/** method promptID-------------------------------------------------------
-	 *  指示使用者輸入ID或Q
-	 * 
-	 * 
-	 *  Pseudo code:
-	 *  介面
-	 * 
-	 *  Time estimate:O(1)
-	 *  Example UI物件.promptID();介面
-	 -----------------------------------------------------------------------*/
-	public void promptID(){
-		System.out.println("Enter ID, or press Q to quit.\n");
-	}
+	
 	/** method showFinishMsg----------------------------------------------------
 	 *  使用者輸入Q時，說BYEBYE
 	 * 
@@ -158,7 +168,7 @@ public class UI extends Main_extends_Object{
 	 *  Example UI物件.showFinishMsg();離開訊息
 	 -----------------------------------------------------------------------*/
 	public void showFinishMsg(){
-		System.out.println("Bye");
+		System.out.println("Finish, bye!\n");
 		System.exit(0);
 	}
 	/**method showWelcomeMsg----------------------------------------------------
