@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" size="929,789" id="hw2" metadata="uml2-1.0" initialized="true" scrolledY="237" tag="10" key="32303037303533312D313020477261646553797374656D50726F6A6563">
+  <children xsi:type="editmodel:ClassEditModel" name="Grades" location="50,540" size="130,229" id="hw2/Grades">
+    <children xsi:type="editmodel:CompartmentEditModel" size="77,144">
+      <children xsi:type="editmodel:AttributeEditModel" name="finalExam" id="hw2/Grades#finalExam"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="iD" id="hw2/Grades#iD"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="lab1" id="hw2/Grades#lab1"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="lab2" id="hw2/Grades#lab2"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="lab3" id="hw2/Grades#lab3"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="midTerm" id="hw2/Grades#midTerm"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="name" id="hw2/Grades#name"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="totalGrade" id="hw2/Grades#totalGrade"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="107,36">
+      <children xsi:type="editmodel:MethodEditModel" name="Grades" id="hw2/Grades#Grades(Ljava.lang.String;Ljava.lang.String;IIIII)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="calculateTotalGrade" id="hw2/Grades#calculateTotalGrade([F)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="GradeSystem" location="309,50" size="144,355" id="hw2/GradeSystem">
+    <children xsi:type="editmodel:CompartmentEditModel" size="121,198">
+      <children xsi:type="editmodel:AttributeEditModel" name="a_final" id="hw2/GradeSystem#a_final"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="a_lab1" id="hw2/GradeSystem#a_lab1"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="a_lab2" id="hw2/GradeSystem#a_lab2"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="a_lab3" id="hw2/GradeSystem#a_lab3"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="a_mid" id="hw2/GradeSystem#a_mid"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="a_total" id="hw2/GradeSystem#a_total"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="fileName" id="hw2/GradeSystem#fileName"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="filePath" id="hw2/GradeSystem#filePath"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="line" id="hw2/GradeSystem#line"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="new_weights" id="hw2/GradeSystem#new_weights"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="weights" id="hw2/GradeSystem#weights"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="96,108">
+      <children xsi:type="editmodel:MethodEditModel" name="GradeSystem" id="hw2/GradeSystem#GradeSystem()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="initialize_Weights" id="hw2/GradeSystem#initialize_Weights()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="showAverage" id="hw2/GradeSystem#showAverage()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="showGrade" id="hw2/GradeSystem#showGrade(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="showRank" id="hw2/GradeSystem#showRank(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="updateWeight" id="hw2/GradeSystem#updateWeight()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="IntegrationTest" location="230,540" size="119,121" id="hw2/IntegrationTest">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="93,72">
+      <children xsi:type="editmodel:MethodEditModel" name="integrationTest1" id="hw2/IntegrationTest#integrationTest1()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="integrationTest2" id="hw2/IntegrationTest#integrationTest2()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setUp" id="hw2/IntegrationTest#setUp()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="tearDown" id="hw2/IntegrationTest#tearDown()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="UnitTestCode" location="503,50" size="152,319" id="hw2/UnitTestCode">
+    <children xsi:type="editmodel:CompartmentEditModel" size="107,54">
+      <children xsi:type="editmodel:AttributeEditModel" name="weights1" id="hw2/UnitTestCode#weights1"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="weights2" id="hw2/UnitTestCode#weights2"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="weights3" id="hw2/UnitTestCode#weights3"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="129,216">
+      <children xsi:type="editmodel:MethodEditModel" name="setUp" id="hw2/UnitTestCode#setUp()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="tearDown" id="hw2/UnitTestCode#tearDown()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="testCalculateTotalGrade1" id="hw2/UnitTestCode#testCalculateTotalGrade1()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="testCalculateTotalGrade2" id="hw2/UnitTestCode#testCalculateTotalGrade2()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="testCalculateTotalGrade3" id="hw2/UnitTestCode#testCalculateTotalGrade3()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="testShowAverage1" id="hw2/UnitTestCode#testShowAverage1()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="testShowGrade1" id="hw2/UnitTestCode#testShowGrade1()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="testShowGrade2" id="hw2/UnitTestCode#testShowGrade2()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="testShowRank1" id="hw2/UnitTestCode#testShowRank1()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="testShowRank2" id="hw2/UnitTestCode#testShowRank2()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="testUpdateWeights1" id="hw2/UnitTestCode#testUpdateWeights1()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="testUpdateWeights2" id="hw2/UnitTestCode#testUpdateWeights2()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="UI" location="89,333" size="130,157" id="hw2/UI">
+    <children xsi:type="editmodel:CompartmentEditModel" size="107,90">
+      <children xsi:type="editmodel:AttributeEditModel" name="currentID" id="hw2/UI#currentID"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="iDI" id="hw2/UI#iDI"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="inputcommand" id="hw2/UI#inputcommand"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="to" id="hw2/UI#to"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="username" id="hw2/UI#username"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="37,18">
+      <children xsi:type="editmodel:MethodEditModel" name="UI" id="hw2/UI#UI()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="hw2/Main_extends_Object&lt;-hw2/UI" source="//@children.4" target="//@children.5" targetEnd="//@children.4/@sourceConnections.0/@children.1" sourceEnd="//@children.4/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="65,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="104,233"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.4/@sourceConnections.0" name="Main_extends_Object" location="50,50" size="209,233" id="hw2/Main_extends_Object">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="47,18">
+      <children xsi:type="editmodel:MethodEditModel" name="main" id="hw2/Main_extends_Object#main([Ljava.lang.String;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="186,156">
+      <children xsi:type="editmodel:ClassEditModel" name="NoSuchCommandExceptions" size="186,85" id="hw2/Main_extends_Object$NoSuchCommandExceptions">
+        <children xsi:type="editmodel:CompartmentEditModel"/>
+        <children xsi:type="editmodel:CompartmentEditModel" size="142,36">
+          <children xsi:type="editmodel:MethodEditModel" name="NoSuchCommandExceptions" id="hw2/Main_extends_Object$NoSuchCommandExceptions#NoSuchCommandExceptions(Ljava.lang.String;)"/>
+          <children xsi:type="editmodel:MethodEditModel" name="NoSuchCommandExceptions" id="hw2/Main_extends_Object$NoSuchCommandExceptions#NoSuchCommandExceptions()"/>
+        </children>
+        <children xsi:type="editmodel:CompartmentEditModel"/>
+        <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+      </children>
+      <children xsi:type="editmodel:ClassEditModel" name="NoSuchIDExceptions" size="146,67" id="hw2/Main_extends_Object$NoSuchIDExceptions">
+        <children xsi:type="editmodel:CompartmentEditModel"/>
+        <children xsi:type="editmodel:CompartmentEditModel" size="110,18">
+          <children xsi:type="editmodel:MethodEditModel" name="NoSuchIDExceptions" id="hw2/Main_extends_Object$NoSuchIDExceptions#NoSuchIDExceptions(Ljava.lang.String;)"/>
+        </children>
+        <children xsi:type="editmodel:CompartmentEditModel"/>
+        <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+      </children>
+    </children>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" level="-1" showScope="InPackage" properties="wireOptions=1;Product=eUML2"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" showDependencyStereotype="true" showInterfaceStereotype="true" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+</editmodel:ClassDiagramEditModel>

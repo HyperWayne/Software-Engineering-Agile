@@ -1,19 +1,41 @@
 package hw2;
+import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.io.*;
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class GradeSystem{
 	
 	
 	
+	/**
+	 * @uml.property  name="weights" multiplicity="(0 -1)" dimension="1"
+	 */
 	float[] weights={0.1f, 0.1f, 0.1f, 0.3f,0.4f};
+	/**
+	 * @uml.property  name="new_weights" multiplicity="(0 -1)" dimension="1"
+	 */
 	float[] new_weights=new float[5];
+	/**
+	 * @uml.property  name="filePath"
+	 */
 	String filePath = "src/gradeinput.txt";
+	/**
+	 * @uml.property  name="alist"
+	 * @uml.associationEnd  multiplicity="(0 -1)" elementType="hw2.Grades"
+	 */
 	public LinkedList<Grades> alist=new LinkedList<Grades>();
+	/**
+	 * @uml.property  name="line"
+	 */
 	String line = null;
+	/**
+	 * @uml.property  name="fileName"
+	 */
 	String fileName = filePath.substring(0,filePath.indexOf("gradeinput.txt"));
+	double a_lab1=0, a_lab2=0, a_lab3=0, a_mid=0, a_total=0, a_final=0;
 	
 	public  GradeSystem(){
 			
@@ -137,10 +159,10 @@ public class GradeSystem{
 	 *  Time estimate:O(1)
 	 *  Example GradeSystem物件.updateWeight(ID);進入改加權狀態
 	 -----------------------------------------------------------------------*/
-	public void updateWeight(String ID){
+	public void updateWeight(){
 		showOldWeights();
 		getNewWeights();
-		setWeights(weights,ID);
+		setWeights(weights);
 	}
 	/** method showOldWeights--------------------------------------------------
 	 *  用來印出當下的加權
@@ -152,14 +174,14 @@ public class GradeSystem{
 	 *  Time estimate:O(1)
 	 *  Example GradesSystem物件.showOldWeights();輸出舊配分
 	 -----------------------------------------------------------------------*/
-	public void showOldWeights(){
+	private void showOldWeights(){
 		System.out.println("Old Weighted Scores"+
 				"\nlab1: "+Math.round(weights[0]*100)+"%"+
 				"\nlab2: "+Math.round(weights[1]*100)+"%"+
 				"\nlab3: "+Math.round(weights[2]*100)+"%"+
 				"\nmid-term: "+Math.round(weights[3]*100)+"%"+
 				"\nfinal exam: "+Math.round(weights[4]*100)+"%");
-		System.out.println("\n Please type new five weights, e.g, 0.1 0.2 0.3 0.4 0.5");
+		System.out.println("\nPlease type new five weights, e.g, 0.1 0.2 0.3 0.4 0.5");
 	}
 	/** method getNewWeights---------------------------------------------------
 	 *  用來接使用者輸入的新配分
@@ -174,19 +196,25 @@ public class GradeSystem{
 	 *  Time estimate:O(1)
 	 *  Example GradeSystem物件.getNewWeights();輸入新配分，之後印出新配分
 	 -----------------------------------------------------------------------*/
-	public void getNewWeights(){
+	@SuppressWarnings("resource")
+	private void getNewWeights() throws InputMismatchException{
+		
 		Scanner scanner=new Scanner(System.in);
+		
 		new_weights[0]=scanner.nextFloat();
 		new_weights[1]=scanner.nextFloat();
 		new_weights[2]=scanner.nextFloat();
 		new_weights[3]=scanner.nextFloat();
 		new_weights[4]=scanner.nextFloat();
-		System.out.println("New Weighted Scores"+
+		
+		System.out.println(
+				"New Weighted Scores"+
 				"\nlab1: "+Math.round(new_weights[0]*100)+
 				"\nlab2: "+Math.round(new_weights[1]*100)+
 				"\nlab3: "+Math.round(new_weights[2]*100)+
 				"\nmid-term: "+Math.round(new_weights[3]*100)+
-				"\nfinal exam: s"+Math.round(new_weights[4]*100));
+				"\nfinal exam: "+Math.round(new_weights[4]*100));
+			
 	}
 	/** method setWeights------------------------------------------------------
 	 *  用來確認使用者新輸入的配分，並更新所有人的totalGrade
@@ -201,7 +229,8 @@ public class GradeSystem{
 	 *  Time estimate:O(n)
 	 *  Example GradeSystem物件.setWeights(weights,id);接確認指令，更新weights、totalGrade
 	 -----------------------------------------------------------------------*/
-	public void setWeights(float[] weights,String id){
+	private void setWeights(float[] weights){
+		
 		System.out.println("New Weighted Score Confirmation: "+
 				"\nlab1: "+Math.round(new_weights[0]*100)+"%"+
 				"\nlab2: "+Math.round(new_weights[1]*100)+"%"+
@@ -209,13 +238,16 @@ public class GradeSystem{
 				"\nmid-term: "+Math.round(new_weights[3]*100)+"%"+
 				"\nfinal exam: "+Math.round(new_weights[4]*100)+"%"+
 				"\nCorrect? Press Y(Yes) or N(No)");
+		
 		Scanner scanner=new Scanner(System.in);
+		
 		if(scanner.next().toUpperCase().equals("Y")){
 			weights[0]=new_weights[0];
 			weights[1]=new_weights[1];
 			weights[2]=new_weights[2];
 			weights[3]=new_weights[3];
 			weights[4]=new_weights[4];
+			
 			for(Iterator<Grades>it=alist.iterator();it.hasNext();){
 				Grades cur=it.next();
 				cur.totalGrade=cur.calculateTotalGrade(weights);			
@@ -255,6 +287,57 @@ public class GradeSystem{
 			
 		}
 	}
+	public void showAverage(){
+			calculateAve();
+			System.out.println("Total Average:"+
+					"\nlab1: "+a_lab1+
+					"\nlab2: "+a_lab2+
+					"\nlab3: "+a_lab3+
+					"\nmid-term: "+a_mid+
+					"\nfinal exam: "+a_final+
+					"\ntotal grade: "+a_total);
+		
+	}
+	
+	/** method calculateAve-----------------------------------------------------
+	 *  算總平均
+	 * 
+	 * 
+	 *  Pseudo code:
+	 *  1.一層for迴圈算出各項加總
+	 *  2.除以人數
+	 * 
+	 *  Time estimate:O(n)
+	 *  Example UI物件.calculateAve();
+	 -----------------------------------------------------------------------*/
+	private void calculateAve(){
+		int person=0;
+		
+		for(Iterator<Grades>i=alist.iterator();i.hasNext();){
+			Grades cur=((Grades)i.next());
+			a_lab1=a_lab1+cur.lab1;
+			a_lab2=a_lab2+cur.lab2;
+			a_lab3=a_lab3+cur.lab3;
+			a_mid=a_mid+cur.midTerm;
+			a_final=a_final+cur.finalExam;
+			a_total=a_total+cur.totalGrade;
+			person++;
+		}	
+
+		a_lab1 = Math.round(a_lab1/person*100);	
+		a_lab1 /= 100;
+		a_lab2 = Math.round(a_lab2/person*100);
+		a_lab2 /= 100;
+		a_lab3 = Math.round(a_lab3/person*100);
+		a_lab3 /= 100;
+		a_mid = Math.round(a_mid/person*100);
+		a_mid /=100;
+		a_final = Math.round(a_final/person*100);
+		a_final /=100;
+		a_total = Math.round(a_total/person*100);
+		a_total /= 100;
+	}
+
 	
 	
 		

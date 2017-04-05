@@ -2,8 +2,38 @@ package hw2;
 
 
 public class Grades {
-	String name,ID;
-	public int lab1,lab2,lab3,midTerm,finalExam,totalGrade;
+	/**
+	 * @uml.property  name="name"
+	 */
+	String name;
+	/**
+	 * @uml.property  name="iD"
+	 */
+	String ID;
+	/**
+	 * @uml.property  name="lab1"
+	 */
+	public int lab1;
+	/**
+	 * @uml.property  name="lab2"
+	 */
+	public int lab2;
+	/**
+	 * @uml.property  name="lab3"
+	 */
+	public int lab3;
+	/**
+	 * @uml.property  name="midTerm"
+	 */
+	public int midTerm;
+	/**
+	 * @uml.property  name="finalExam"
+	 */
+	public int finalExam;
+	/**
+	 * @uml.property  name="totalGrade"
+	 */
+	public int totalGrade;
 	public Grades(String ID, String name, int lab1, int lab2, int lab3, int midTerm, int finalExam){
 			this.ID=ID;
 			this.name=name;

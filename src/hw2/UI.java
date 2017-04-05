@@ -6,11 +6,30 @@ import java.util.Scanner;
 
 import hw2.Main_extends_Object.NoSuchCommandExceptions;
 public class UI extends Main_extends_Object{
+	/**
+	 * @uml.property  name="currentID"
+	 */
 	String currentID="";
+	/**
+	 * @uml.property  name="inputcommand"
+	 */
 	String inputcommand;
+	/**
+	 * @uml.property  name="iDI"
+	 */
 	String IDI;
+	/**
+	 * @uml.property  name="username"
+	 */
 	String username;
-	int a_lab1=0,a_lab2=0,a_lab3=0,a_mid=0,a_final=0,a_total=0,to=0;
+	/**
+	 * @uml.property  name="to"
+	 */
+	int to=0;
+	/**
+	 * @uml.property  name="aGradeSystem"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	public GradeSystem aGradeSystem;
 	public UI()throws NoSuchIDExceptions,NoSuchCommandExceptions{
 			
@@ -51,7 +70,7 @@ public class UI extends Main_extends_Object{
 	 *  Time estimate:O(1)
 	 *  Example UI物件.promptID();介面
 	 * 	 -----------------------------------------------------------------------*/
-	public boolean promptID(){
+	private boolean promptID(){
 		
 		System.out.println("Enter ID, or press Q to quit.\n");
 		Scanner scanner = new Scanner(System.in);
@@ -80,7 +99,7 @@ public class UI extends Main_extends_Object{
 	*  Example: UI物件.checkID(962001044) ; 傳回結果為 true
 	----------------------------------------------------------------------------------------------------------*/
 
-	public boolean checkID(String ID)throws NoSuchIDExceptions{
+	private boolean checkID(String ID)throws NoSuchIDExceptions{
 		boolean flag=false;
 		
 		for (Iterator<Grades> i = aGradeSystem.alist.iterator(); i.hasNext();) {
@@ -93,7 +112,7 @@ public class UI extends Main_extends_Object{
 		      }
 		}
 		System.out.println(ID);
-		if(flag==false)throw new NoSuchIDExceptions(ID);
+	
 		return flag;
 	}
 	/** method  promptCommand  ----------------------------------------------------------------------------------                                                                                                    
@@ -113,7 +132,7 @@ public class UI extends Main_extends_Object{
 	*  Example: UI物件.promptCommand() ; 直到吃到E為止都傳回結果為 true
 	----------------------------------------------------------------------------------------------------------*/
 
-	public boolean promptCommand()throws NoSuchCommandExceptions{
+	private boolean promptCommand()throws NoSuchCommandExceptions{
 		Scanner scanner = new Scanner(System.in);
 		inputcommand = scanner.next();
 		inputcommand = inputcommand.toUpperCase();
@@ -129,11 +148,12 @@ public class UI extends Main_extends_Object{
 				
 			}
 			else if(inputcommand.equals("W")){
-				aGradeSystem.updateWeight(IDI);
+				aGradeSystem.updateWeight();
 				to=0;
 			}
 			else if(inputcommand.equals("A")){
-				showAverage();
+				aGradeSystem.showAverage();
+				to=1;
 			}
 			System.out.println(
 					"輸入指令\n"                  +
@@ -167,7 +187,7 @@ public class UI extends Main_extends_Object{
 	 *  Time estimate:O(1)
 	 *  Example UI物件.showFinishMsg();離開訊息
 	 -----------------------------------------------------------------------*/
-	public void showFinishMsg(){
+	private void showFinishMsg(){
 		System.out.println("Finish, bye!\n");
 		System.exit(0);
 	}
@@ -181,9 +201,17 @@ public class UI extends Main_extends_Object{
 	 * Time estimate:O(1)
 	 * Example UI物件.showWelcomeMsg();歡迎訊息
 	 -----------------------------------------------------------------------*/
-	public void showWelcomeMsg(String ID){
+	private void showWelcomeMsg(String ID){
 		
-			System.out.println("Welcome "+username);	
+			System.out.println("Welcome "+username);
+			System.out.println(
+					"輸入指令\n"                  +
+					"	1) G 顯示成績(Grade)\n"   +
+					"	2) R 顯示排名(Rank)\n"    +
+					"	3) A 顯示平均(Average)\n" +
+					"	4) W 更新配分(Weight)\n"  +
+					"	5) E 離開選單(Exit)");
+		
 	}
 	/** method showAverage------------------------------------------------------
 	 *  顯示平均
@@ -196,57 +224,4 @@ public class UI extends Main_extends_Object{
 	 *  Time estimate:O(1)
 	 *  Example UI物件.promptID();
 	 -----------------------------------------------------------------------*/
-	public void showAverage(){
-		if(to==0){
-			calculateAve();
-			System.out.println("Total Average:"+
-					"\nlab1: "+a_lab1+
-					"\nlab2: "+a_lab2+
-					"\nlab3: "+a_lab3+
-					"\nmid-term: "+a_mid+
-					"\nfinal exam: "+a_final+
-					"\ntotalGrade: "+a_total);
-		}
-		else{
-			System.out.println("Total Average"+
-					"\nlab1:"+a_lab1+
-					"\nlab2:"+a_lab2+
-					"\nlab3:"+a_lab3+
-					"\nmid-term "+a_mid+
-					"\nfinal exam: "+a_final+
-					"\ntotalGrade: "+a_total);
-		}
-		
 	}
-	/** method calculateAve-----------------------------------------------------
-	 *  算總平均
-	 * 
-	 * 
-	 *  Pseudo code:
-	 *  1.一層for迴圈算出各項加總
-	 *  2.除以人數
-	 * 
-	 *  Time estimate:O(n)
-	 *  Example UI物件.calculateAve();
-	 -----------------------------------------------------------------------*/
-	public void calculateAve(){
-		int person=0;
-		for(Iterator<Grades>i=aGradeSystem.alist.iterator();i.hasNext();){
-			Grades cur=((Grades)i.next());
-			a_lab1=a_lab1+cur.lab1;
-			a_lab2=a_lab2+cur.lab2;
-			a_lab3=a_lab3+cur.lab3;
-			a_mid=a_mid+cur.midTerm;
-			a_final=a_final+cur.finalExam;
-			a_total=a_total+cur.totalGrade;
-			person++;
-		}
-		to=1;
-		a_lab1=a_lab1/person;
-		a_lab2=a_lab2/person;
-		a_lab3=a_lab3/person;
-		a_mid=a_mid/person;
-		a_final=a_final/person;
-		a_total=a_total/person;
-	}
-}
