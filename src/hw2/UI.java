@@ -213,15 +213,5 @@ public class UI extends Main_extends_Object{
 					"	5) E 離開選單(Exit)");
 		
 	}
-	/** method showAverage------------------------------------------------------
-	 *  顯示平均
-	 * 
-	 * 
-	 *  Pseudo code:
-	 *  1. 如果是第一次進入則call calculateAve算平均
-	 *  2. 否則就輸出之前算好的平均
-	 * 
-	 *  Time estimate:O(1)
-	 *  Example UI物件.promptID();
-	 -----------------------------------------------------------------------*/
-	}
+	
+}

@@ -287,6 +287,17 @@ public class GradeSystem{
 			
 		}
 	}
+	/** method showAverage------------------------------------------------------
+	 *  顯示平均
+	 * 
+	 * 
+	 *  Pseudo code:
+	 *  1. 如果是第一次進入則call calculateAve算平均
+	 *  2. 否則就輸出之前算好的平均
+	 * 
+	 *  Time estimate:O(1)
+	 *  Example GradeSystem物件.showAverage();
+	 -----------------------------------------------------------------------*/
 	public void showAverage(){
 			calculateAve();
 			System.out.println("Total Average:"+
@@ -308,7 +319,7 @@ public class GradeSystem{
 	 *  2.除以人數
 	 * 
 	 *  Time estimate:O(n)
-	 *  Example UI物件.calculateAve();
+	 *  Example GradeSystem物件.calculateAve();
 	 -----------------------------------------------------------------------*/
 	private void calculateAve(){
 		int person=0;
